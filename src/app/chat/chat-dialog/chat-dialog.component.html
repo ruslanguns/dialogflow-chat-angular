@@ -1,6 +1,6 @@
 <div class="clearfix">
     <div class="container">
-        <h1 class="center">WifiSocial Chatbot</h1>
+        <h1 class="center">{{ chatbotName | uppercase }}</h1>
 
         <ng-container *ngFor="let message of messages | async">
 
@@ -8,12 +8,21 @@
                                           'to float-right'  : message.sendBy === 'user'}">
                 <span class="espacio" *ngIf="message.sendBy === 'bot'"><b>Bot: </b> {{ message.content }}</span>
                 <span class="espacio" *ngIf="message.sendBy === 'user'"><b>Yo: </b> {{ message.content }}</span>
+
             </div>
         </ng-container>
 
         <label for="nameField">Tu mensaje</label>
-        <input [(ngModel)]="formValue" (keyup.enter)="sendMessage()" type="text"><br>
+        <input [(ngModel)]="formValue" name="formValue" (keyup.enter)="sendMessage()" type="text"><br>
 
-        <button (click)="sendMessage()">Enviar</button>
+        <button *ngIf="chat.cargando" (click)="sendMessage()">
+            <i class="fas fa-spinner fa-spin"></i>
+            Obteniendo respuesta ...
+          </button>
+        <button *ngIf="!chat.cargando" (click)="sendMessage()">
+            <!-- <i class="fas fa fa-spin"></i> -->
+            Enviar mensaje
+          </button>
+
     </div>
 </div>

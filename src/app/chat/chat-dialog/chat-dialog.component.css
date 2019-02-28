@@ -34,3 +34,8 @@
 .clearfix {
     padding-top: 15px;
 }
+
+.cargando {
+    text-align: center;
+    font-size: 12px;
+}

@@ -24,7 +24,10 @@ export class ChatService {
 
   conversation = new BehaviorSubject<Message[]>([]);
 
-  constructor() { }
+  cargando: boolean;
+
+  constructor() {
+   }
 
   // talk() {
   //   this.client.textRequest('¿Quién eres?')
@@ -38,15 +41,21 @@ export class ChatService {
 
   // Sends and receives messages via DiagFlow
   converse( msg: string ) {
+
     const userMessage = new Message( msg, 'user');
     this.update( userMessage );
 
     return this.client.textRequest( msg )
                 .then( res => {
-                  console.log( res );
-                  const speech = res.result.fulfillment.speech;
-                  const botMessage = new Message(speech, 'bot');
-                  this.update( botMessage );
-                });
+                  this.cargando = true;
+
+                  setTimeout(() => {
+                    const speech = res.result.fulfillment.speech;
+                    const botMessage = new Message(speech, 'bot');
+                    this.update( botMessage );
+
+                    this.cargando = false;
+                }, 1000);
+              });
   }
 }

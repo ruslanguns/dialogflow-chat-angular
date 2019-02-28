@@ -16,10 +16,16 @@ export class ChatDialogComponent implements OnInit {
 
   messages: Observable<Message[]>;
   formValue: string;
+  chatbotName: string;
+
+  cargando: boolean;
 
   constructor(
     public chat: ChatService
-  ) { }
+  ) {
+    this.chatbotName = 'WifiSocial Chatbot';
+    this.cargando = chat.cargando;
+   }
 
   ngOnInit() {
     // this.chat.talk();
@@ -29,8 +35,9 @@ export class ChatDialogComponent implements OnInit {
   }
 
   sendMessage() {
+
     this.chat.converse( this.formValue );
     this.formValue = '';
-  }
 
+  }
 }
