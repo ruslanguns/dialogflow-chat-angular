@@ -1,0 +1,36 @@
+.message {
+    /* max-width: 100%; */
+    border-radius: 10px;
+    text-align: center;
+    background: rgb(178, 209, 235);
+    color: rgb(36, 67, 92);
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-end;
+    margin: 5px;
+}
+
+.from {
+    flex: none;
+    /* align-self: flex-start; */
+}
+
+.to {
+    background: rgb(36, 67, 92);
+    color: rgb(178, 209, 235);
+    /* align-self: flex-end; */
+}
+
+.espacio {
+    margin: 2px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.center {
+    text-align: center;
+}
+
+.clearfix {
+    padding-top: 15px;
+}

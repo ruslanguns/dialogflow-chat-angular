@@ -1,0 +1,19 @@
+<div class="clearfix">
+    <div class="container">
+        <h1 class="center">WifiSocial Chatbot</h1>
+
+        <ng-container *ngFor="let message of messages | async">
+
+            <div class="message" [ngClass]="{ 'from float-left': message.sendBy === 'bot',
+                                          'to float-right'  : message.sendBy === 'user'}">
+                <span class="espacio" *ngIf="message.sendBy === 'bot'"><b>Bot: </b> {{ message.content }}</span>
+                <span class="espacio" *ngIf="message.sendBy === 'user'"><b>Yo: </b> {{ message.content }}</span>
+            </div>
+        </ng-container>
+
+        <label for="nameField">Tu mensaje</label>
+        <input [(ngModel)]="formValue" (keyup.enter)="sendMessage()" type="text"><br>
+
+        <button (click)="sendMessage()">Enviar</button>
+    </div>
+</div>

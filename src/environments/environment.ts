@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  dialogflow: {
+    WifiSocial: '392992e9e5ca4b0f9e3ae11d159facb8'
+  }
 };
 
 /*
